@@ -1,711 +1,686 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>동의대학교부속한방병원 뇌혈관·심혈관센터 | 한방내과 전문의</title>
-  <!-- Tailwind CSS CDN -->
+  <title>동의대학교부속한방병원 뇌·심혈관센터 | 한방내과 전문의</title>
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
-  <!-- Google Fonts: Noto Sans KR & Pretendard -->
+  <!-- Editorial & Clean Typography Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            brand: {
-              50: '#f0f7f6',
-              100: '#d9ece9',
-              200: '#b6dbd5',
-              600: '#1e6f66',
-              700: '#165750',
-              800: '#144641',
-              900: '#0d2e2b',
+            paper: '#FBF9F5',
+            surface: '#F4EFEB',
+            charcoal: '#141413',
+            muted: '#686663',
+            subtle: '#D9D3CC',
+            // Singular restrained accent (Muted Deep Jade / Pine)
+            jade: {
+              DEFAULT: '#1B4D3E',
+              dark: '#12352B',
+              soft: '#EAF1EE',
             },
-            accent: {
-              DEFAULT: '#b45309',
-              dark: '#853e08',
-            }
+            terracotta: '#A65335',
           },
           fontFamily: {
-            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'sans-serif'],
-            serif: ['"Noto Serif KR"', 'serif'],
+            sans: ['Pretendard', '-apple-system', 'sans-serif'],
+            serif: ['Newsreader', 'serif'],
+            display: ['Cinzel', 'serif'],
           }
         }
       }
     }
   </script>
   <style>
+    /* Taste-Skill Micro-Aesthetics: Noise grain, custom easing, typography restraint */
     body {
-      font-family: 'Pretendard', -apple-system, sans-serif;
-      scroll-behavior: smooth;
+      background-color: #FBF9F5;
+      color: #141413;
+      font-family: 'Pretendard', sans-serif;
     }
-    .serif-title {
-      font-family: 'Noto Serif KR', serif;
+    .font-editorial {
+      font-family: 'Newsreader', serif;
     }
-    .custom-gradient {
-      background: linear-gradient(135deg, #0d2e2b 0%, #165750 50%, #1a3c37 100%);
+    .font-display {
+      font-family: 'Cinzel', serif;
+    }
+    /* Subtle paper texture feel */
+    .paper-texture {
+      background-image: radial-gradient(#d3cdc4 0.75px, transparent 0.75px);
+      background-size: 24px 24px;
+    }
+    /* Double-bezel card structure */
+    .double-bezel {
+      border: 1px solid #E5DFD7;
+      background: #FFFFFF;
+      box-shadow: 0 1px 3px rgba(20, 20, 19, 0.04), inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+    }
+    .double-bezel-inner {
+      border: 1px solid #ECE7E1;
+      background: #FAF8F5;
+    }
+    /* Restrained button with micro-border */
+    .btn-press {
+      transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.15s ease;
+    }
+    .btn-press:active {
+      transform: scale(0.985);
+    }
+    /* Hide scrollbar for clean UI */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-600 selection:text-white">
+<body class="antialiased selection:bg-jade selection:text-white paper-texture">
 
-  <!-- 상단 네비게이션 -->
-  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20">
-        <!-- 병원 & 진료과 로고 -->
-        <a href="#home" class="flex items-center gap-3">
-          <div class="w-11 h-11 rounded-xl bg-brand-700 flex items-center justify-center text-white shadow-md shadow-brand-700/20">
-            <i data-lucide="activity" class="w-6 h-6"></i>
-          </div>
-          <div>
-            <div class="text-xs font-semibold tracking-wider text-brand-700 uppercase">동의대학교부속한방병원</div>
-            <div class="text-lg font-bold text-slate-900 leading-tight">뇌·심혈관센터 <span class="text-brand-600 font-medium text-sm">한방내과</span></div>
-          </div>
-        </a>
-
-        <!-- 네비게이션 링크 -->
-        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-700">
-          <a href="#about" class="hover:text-brand-700 transition">의료진 소개</a>
-          <a href="#specialty" class="hover:text-brand-700 transition">중점 진료분야</a>
-          <a href="#treatment" class="hover:text-brand-700 transition">통합 한방치료</a>
-          <a href="#self-check" class="hover:text-brand-700 transition">혈관 자가진단</a>
-          <a href="#schedule" class="hover:text-brand-700 transition">진료 시간표</a>
-        </nav>
-
-        <!-- 예약 문의 버튼 -->
-        <div class="flex items-center gap-3">
-          <button onclick="openBookingModal()" class="px-5 py-2.5 rounded-lg bg-brand-700 hover:bg-brand-800 text-white font-medium text-sm transition shadow-sm flex items-center gap-2">
-            <i data-lucide="calendar" class="w-4 h-4"></i>
-            <span>진료 예약·상담</span>
-          </button>
+  <!-- Taste-Skill Minimal Top Header Bar -->
+  <div class="border-b border-subtle/80 bg-paper/90 backdrop-blur-md sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#hero" class="flex items-center gap-3">
+        <span class="w-2.5 h-2.5 rounded-full bg-jade inline-block"></span>
+        <div class="leading-none">
+          <div class="text-[10px] tracking-[0.2em] uppercase font-semibold text-muted">Dong-Eui University Medical Center</div>
+          <div class="text-sm font-semibold tracking-tight text-charcoal mt-0.5">뇌·심혈관 한방내과 <span class="text-xs font-normal text-muted">/ 楊亭 本院</span></div>
         </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-xs font-medium text-muted tracking-wide">
+        <a href="#about" class="hover:text-charcoal transition-colors">진료 철학</a>
+        <a href="#curation" class="hover:text-charcoal transition-colors">특화 클리닉</a>
+        <a href="#protocol" class="hover:text-charcoal transition-colors">재활 시스템</a>
+        <a href="#self-eval" class="hover:text-charcoal transition-colors">신경·혈관 자가진단</a>
+        <a href="#clinic-hours" class="hover:text-charcoal transition-colors">진료 안내</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <button onclick="toggleModal(true)" class="btn-press text-xs font-medium bg-jade hover:bg-jade-dark text-white px-4 py-2 rounded-full border border-jade-dark/30 shadow-sm flex items-center gap-2">
+          <span>진료 상담 예약</span>
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+        </button>
       </div>
     </div>
-  </header>
+  </div>
 
-  <!-- 메인 히어로 섹션 -->
-  <section id="home" class="custom-gradient text-white py-20 lg:py-28 relative overflow-hidden">
-    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px]"></div>
-    
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid lg:grid-cols-12 gap-12 items-center">
-        <!-- 텍스트 영역 -->
-        <div class="lg:col-span-7 space-y-6">
-          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-brand-100 text-xs font-medium backdrop-blur-sm border border-white/20">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            동의대학교부속한방병원 한방내과 전문의
-          </div>
-          
-          <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight serif-title text-slate-50">
-            막힌 기혈(氣血)을 뚫고,<br>
-            <span class="text-emerald-300">뇌와 심장의 숨길</span>을 다시 엽니다.
-          </h1>
-
-          <p class="text-base sm:text-lg text-slate-200 leading-relaxed font-light">
-            동의보감의 전통 의학과 현대 한의혈관학의 과학적 융합.<br class="hidden sm:inline">
-            중풍(뇌졸중) 후유증 재활부터 협심증, 부정맥, 동맥경화 등 
-            혈관 질환의 근본적인 원인을 다스리는 전문 진료를 약속드립니다.
-          </p>
-
-          <div class="pt-4 flex flex-wrap gap-4">
-            <a href="#specialty" class="px-6 py-3.5 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-semibold rounded-lg shadow-lg shadow-emerald-500/20 transition flex items-center gap-2">
-              주요 진료분야 보기 <i data-lucide="arrow-right" class="w-4 h-4"></i>
-            </a>
-            <a href="tel:0518675101" class="px-6 py-3.5 bg-white/10 hover:bg-white/20 text-white font-medium rounded-lg backdrop-blur-sm border border-white/20 transition flex items-center gap-2">
-              <i data-lucide="phone-call" class="w-4 h-4 text-emerald-300"></i> 051-867-5101
-            </a>
-          </div>
-
-          <!-- 주요 수치 하이라이트 -->
-          <div class="pt-8 border-t border-white/10 grid grid-cols-3 gap-6">
-            <div>
-              <div class="text-2xl sm:text-3xl font-bold text-emerald-300">20+ 년</div>
-              <div class="text-xs sm:text-sm text-slate-300">임상 및 학술 연구</div>
-            </div>
-            <div>
-              <div class="text-2xl sm:text-3xl font-bold text-emerald-300">보건복지부</div>
-              <div class="text-xs sm:text-sm text-slate-300">공인 한방내과 전문의</div>
-            </div>
-            <div>
-              <div class="text-2xl sm:text-3xl font-bold text-emerald-300">양·한방</div>
-              <div class="text-xs sm:text-sm text-slate-300">협진 입원·재활 시스템</div>
-            </div>
-          </div>
+  <!-- Hero Section: Editorial & Asymmetric Typographic Architecture -->
+  <section id="hero" class="max-w-6xl mx-auto px-6 pt-16 pb-20 border-b border-subtle/60">
+    <div class="grid lg:grid-cols-12 gap-12 items-start">
+      
+      <!-- Left Column: Editorial Statement (Taste-skill variance: non-generic headline) -->
+      <div class="lg:col-span-7 space-y-8">
+        <div class="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-surface border border-subtle text-xs text-muted">
+          <span class="w-1.5 h-1.5 rounded-full bg-jade"></span>
+          동의대학교부속한방병원 뇌·심혈관 임상연구센터
         </div>
 
-        <!-- 의료진 프로필 카드 영역 -->
-        <div class="lg:col-span-5 flex justify-center">
-          <div class="w-full max-w-md bg-white rounded-3xl shadow-2xl p-6 sm:p-8 text-slate-800 border border-slate-100 relative">
-            <div class="absolute -top-3 -right-3 bg-brand-700 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md">
-              동의대 한방병원 교수
-            </div>
-            
-            <div class="flex items-center gap-5 mb-6">
-              <div class="w-24 h-28 rounded-2xl bg-gradient-to-b from-brand-100 to-slate-200 overflow-hidden flex items-end justify-center shadow-inner relative">
-                <i data-lucide="user" class="w-16 h-16 text-brand-700"></i>
-              </div>
-              <div>
-                <span class="text-xs font-semibold text-brand-600 bg-brand-50 px-2.5 py-1 rounded">한방내과 주임교수</span>
-                <h3 class="text-2xl font-bold text-slate-900 mt-1">김 영 훈 <span class="text-sm font-normal text-slate-500">교수</span></h3>
-                <p class="text-xs text-slate-600 mt-1 leading-snug">한의학박사 · 한방내과 전문의</p>
-                <p class="text-xs text-slate-400">뇌신경·심혈관질환 특화 클리닉</p>
-              </div>
-            </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-charcoal leading-[1.12]">
+          생명의 근원인 <span class="font-editorial italic font-serif font-light text-jade underline decoration-subtle decoration-1 underline-offset-8">혈맥(血脈)</span>을 바로잡고,<br>
+          뇌와 심장의 길을 엽니다.
+        </h1>
 
-            <div class="space-y-2.5 text-xs text-slate-600 pb-6 border-b border-slate-100">
-              <div class="flex items-start gap-2">
-                <i data-lucide="check-circle" class="w-4 h-4 text-brand-600 shrink-0 mt-0.5"></i>
-                <span>동의대학교 한의과대학 학사 / 석사 / 박사</span>
-              </div>
-              <div class="flex items-start gap-2">
-                <i data-lucide="check-circle" class="w-4 h-4 text-brand-600 shrink-0 mt-0.5"></i>
-                <span>대한한방내과학회 심계내과학분과학회 정회원</span>
-              </div>
-              <div class="flex items-start gap-2">
-                <i data-lucide="check-circle" class="w-4 h-4 text-brand-600 shrink-0 mt-0.5"></i>
-                <span>대한중풍순환신경학회 이사 및 임상연구위원</span>
-              </div>
-              <div class="flex items-start gap-2">
-                <i data-lucide="check-circle" class="w-4 h-4 text-brand-600 shrink-0 mt-0.5"></i>
-                <span>동의의료원 뇌혈관질환 집중케어병동 책임교수</span>
-              </div>
-            </div>
-
-            <div class="mt-5 bg-slate-50 p-3.5 rounded-xl text-xs text-slate-700 flex items-center justify-between">
-              <div>
-                <span class="font-semibold block text-slate-900">외래 진료실 위치</span>
-                <span>동의의료원 본관 2층 한방내과 1진료실</span>
-              </div>
-              <span class="px-2.5 py-1 bg-brand-100 text-brand-800 font-bold rounded">양정 본원</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 진료 철학 섹션 -->
-  <section id="about" class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto text-center mb-16">
-        <h2 class="text-xs font-bold uppercase tracking-wider text-brand-600 mb-2">Philosophy of Care</h2>
-        <p class="text-3xl font-extrabold text-slate-900 serif-title">
-          "혈맥(血脈)의 흐름이 곧 생명의 길입니다."
+        <p class="text-base text-muted max-w-xl font-normal leading-relaxed">
+          급성기 이후 남는 편마비와 연하장애, 원인을 알 수 없는 가슴 답답함과 미세 혈전. 
+          동의보감 전통 순환의학과 정밀 한의신경학의 근거 중심 융합으로 
+          혈류의 장애(痰飮·瘀血)를 거두어 본래의 일상을 되찾아드립니다.
         </p>
-        <p class="mt-4 text-slate-600 leading-relaxed">
-          뇌와 심장은 우리 몸에서 단 몇 분만 산소와 혈액 공급이 끊겨도 치명적인 손상을 입는 핵심 장기입니다.
-          혈전과 담음(痰飮), 어혈(瘀血)을 제거하여 혈류 순환을 촉진하고, 신경 재생과 혈관 탄력을 북돋는
-          한의학적 본치(本治)로 환자분의 건강한 삶을 되찾아 드리겠습니다.
+
+        <!-- Fast Facts Data Strip (Honest Data Panels) -->
+        <div class="grid grid-cols-3 gap-4 pt-4 border-t border-subtle">
+          <div>
+            <div class="text-[11px] font-mono uppercase tracking-wider text-muted">Specialty</div>
+            <div class="text-sm font-semibold text-charcoal mt-1">보건복지부 공인</div>
+            <div class="text-xs text-muted">한방내과 전문의</div>
+          </div>
+          <div>
+            <div class="text-[11px] font-mono uppercase tracking-wider text-muted">Inpatient Care</div>
+            <div class="text-sm font-semibold text-charcoal mt-1">양·한방 협진</div>
+            <div class="text-xs text-muted">뇌졸중 집중 재활 병상</div>
+          </div>
+          <div>
+            <div class="text-[11px] font-mono uppercase tracking-wider text-muted">Foundation</div>
+            <div class="text-sm font-semibold text-charcoal mt-1">부산 양정 본원</div>
+            <div class="text-xs text-muted">동의의료원 부속병원</div>
+          </div>
+        </div>
+
+        <div class="pt-2 flex flex-wrap items-center gap-4">
+          <button onclick="toggleModal(true)" class="btn-press px-6 py-3 bg-charcoal hover:bg-black text-white text-xs font-semibold rounded-lg tracking-wide flex items-center gap-2">
+            <span>외래 및 입원 상담 접수</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+          <a href="tel:0518675101" class="btn-press px-5 py-3 bg-surface hover:bg-subtle/50 text-charcoal text-xs font-medium rounded-lg border border-subtle flex items-center gap-2">
+            <i data-lucide="phone" class="w-3.5 h-3.5 text-jade"></i>
+            <span>051-867-5101</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Tactile Professor / Specialist Dossier Card -->
+      <div class="lg:col-span-5">
+        <div class="double-bezel p-6 rounded-2xl relative">
+          <!-- Top badge -->
+          <div class="flex items-center justify-between pb-4 border-b border-subtle/60 text-xs">
+            <span class="font-mono text-muted text-[11px]">DEU-MED // CLINIC-01</span>
+            <span class="inline-flex items-center gap-1.5 text-jade font-medium bg-jade-soft px-2.5 py-0.5 rounded-full text-[11px]">
+              진료 중 (본관 2층)
+            </span>
+          </div>
+
+          <!-- Doctor Profile Meta -->
+          <div class="mt-6 flex items-start gap-4">
+            <div class="w-20 h-24 rounded-lg bg-surface border border-subtle flex flex-col items-center justify-center text-muted overflow-hidden shrink-0">
+              <i data-lucide="stethoscope" class="w-8 h-8 text-jade mb-1"></i>
+              <span class="text-[9px] uppercase font-mono tracking-wider">SPECIALIST</span>
+            </div>
+            <div>
+              <div class="text-xs font-medium text-jade">한방내과 주임교수</div>
+              <h2 class="text-xl font-bold tracking-tight text-charcoal mt-0.5">김 영 훈 <span class="text-sm font-normal text-muted">교수</span></h2>
+              <p class="text-xs text-muted mt-1">한의학박사 · 한방내과 전문의</p>
+              <p class="text-[11px] text-muted/80 mt-0.5">뇌신경계 및 심순환계 중점 진료</p>
+            </div>
+          </div>
+
+          <!-- Academic & Clinical Credentials -->
+          <div class="mt-6 space-y-2.5 double-bezel-inner p-4 rounded-xl text-xs text-charcoal">
+            <div class="flex items-baseline gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-jade shrink-0 translate-y-[-1px]"></span>
+              <span>동의대학교 한의과대학 학·석·박사 학위 취득</span>
+            </div>
+            <div class="flex items-baseline gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-jade shrink-0 translate-y-[-1px]"></span>
+              <span>대한한방내과학회 심계내과학회 평의원</span>
+            </div>
+            <div class="flex items-baseline gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-jade shrink-0 translate-y-[-1px]"></span>
+              <span>대한중풍순환신경학회 정회원 및 학술위원</span>
+            </div>
+            <div class="flex items-baseline gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-jade shrink-0 translate-y-[-1px]"></span>
+              <span>동의의료원 뇌혈관 집중케어 한방재활 클리닉 전임</span>
+            </div>
+          </div>
+
+          <div class="mt-5 pt-4 border-t border-subtle/60 flex items-center justify-between text-xs text-muted">
+            <span>외래 진료실: 동의의료원 본관 2층 1진료실</span>
+            <span class="font-mono text-[11px]">양정로 62</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 2: Clinical Philosophy — Quiet Minimalist Exposition -->
+  <section id="about" class="max-w-6xl mx-auto px-6 py-20 border-b border-subtle/60">
+    <div class="grid lg:grid-cols-12 gap-8 items-baseline">
+      <div class="lg:col-span-4">
+        <span class="font-mono text-[11px] tracking-widest uppercase text-muted block mb-2">01 / Foundation</span>
+        <h2 class="text-2xl font-bold tracking-tight text-charcoal">
+          기(氣)가 통하면<br>혈(血)이 흐르고 신경이 깨어납니다.
+        </h2>
+      </div>
+      <div class="lg:col-span-8 space-y-4 text-muted text-sm leading-relaxed">
+        <p>
+          뇌혈관과 심장은 인체에서 가장 정밀한 혈류 순환망을 가지고 있습니다. 한의학에서는 미세 혈관이 굳어지고 막히는 원인을 몸 안의 대사 노폐물인 <strong>담음(痰飮)</strong>과 흐름을 잃은 피 <strong>어혈(瘀血)</strong>로 파악합니다.
+        </p>
+        <p>
+          동의대학교부속한방병원 한방내과에서는 단순 대증치료를 넘어, 혈액을 맑게 하고 자율신경계와 심장의 추동력을 회복시켜 중풍 후유증 재활과 심혈관계 질환의 재발 방지를 목표로 합니다.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Specialized Clinics (Asymmetrical Bento Architecture) -->
+  <section id="curation" class="max-w-6xl mx-auto px-6 py-20 border-b border-subtle/60">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+      <div>
+        <span class="font-mono text-[11px] tracking-widest uppercase text-muted block mb-2">02 / Specialization</span>
+        <h2 class="text-3xl font-bold tracking-tight text-charcoal">중점 진료 3대 클리닉</h2>
+      </div>
+      <p class="text-xs text-muted mt-2 md:mt-0 font-mono max-w-xs text-right">
+        CLINICAL FOCUS: CEREBROVASCULAR, CARDIOVASCULAR & MICROCIRCULATION
+      </p>
+    </div>
+
+    <!-- Asymmetrical Bento Grid -->
+    <div class="grid md:grid-cols-12 gap-6">
+      
+      <!-- Card 1: Stroke Rehab (Large, Span 7) -->
+      <div class="md:col-span-7 double-bezel p-8 rounded-2xl flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between text-xs mb-4">
+            <span class="font-mono text-jade font-semibold">CLINIC A</span>
+            <span class="text-muted text-[11px] font-mono">NEUROLOGY</span>
+          </div>
+          <h3 class="text-xl font-bold text-charcoal mb-3">중풍(뇌졸중) 후유증 및 신경 재활 클리닉</h3>
+          <p class="text-xs text-muted leading-relaxed mb-6">
+            뇌경색 및 뇌출혈 급성기 치료 후 동반되는 편측 마비, 보행 곤란, 연하장애(삼킴 장애), 구음장애에 대해 두침(頭鍼) 및 고유 한약 처방을 통해 뇌 신경가소성(Neuroplasticity)을 활성화합니다.
+          </p>
+
+          <div class="grid sm:grid-cols-2 gap-3 mb-6">
+            <div class="p-3 double-bezel-inner rounded-xl text-xs">
+              <strong class="block font-medium text-charcoal mb-1">두침(頭鍼) · 전침 자극술</strong>
+              <p class="text-[11px] text-muted">대뇌 운동·감각 투사구역 정밀 자극으로 신경 복원 유도</p>
+            </div>
+            <div class="p-3 double-bezel-inner rounded-xl text-xs">
+              <strong class="block font-medium text-charcoal mb-1">성향정기산 · 거풍 가감방</strong>
+              <p class="text-[11px] text-muted">풍담(風痰)을 삭이고 미세 뇌혈류 순환 촉진</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-subtle/60 flex items-center justify-between text-xs text-muted">
+          <span>적응증: 편마비, 안면마비, 연하장애, 혈관성 인지저하</span>
+          <i data-lucide="shield-check" class="w-4 h-4 text-jade"></i>
+        </div>
+      </div>
+
+      <!-- Card 2: Cardiovascular (Span 5) -->
+      <div class="md:col-span-5 double-bezel p-8 rounded-2xl flex flex-col justify-between bg-surface/30">
+        <div>
+          <div class="flex items-center justify-between text-xs mb-4">
+            <span class="font-mono text-terracotta font-semibold">CLINIC B</span>
+            <span class="text-muted text-[11px] font-mono">CARDIOLOGY</span>
+          </div>
+          <h3 class="text-xl font-bold text-charcoal mb-3">심계정충 · 흉통 · 순환 클리닉</h3>
+          <p class="text-xs text-muted leading-relaxed mb-6">
+            검사상 이상이 없으나 지속되는 심장 두근거림(심계항진), 가슴 답답함(흉민), 협심증 스텐트 시술 후 잔여 흉통 및 기립성 어지럼증을 자율신경 조율과 심기(心氣) 보강으로 치료합니다.
+          </p>
+
+          <div class="space-y-2 mb-6">
+            <div class="p-3 double-bezel-inner rounded-xl text-xs">
+              <span class="font-medium text-charcoal">천왕보심단 & 청심연자음 가감</span>
+              <p class="text-[11px] text-muted mt-0.5">심열(心熱)을 내리고 심인성 불안 및 부정맥 안정</p>
+            </div>
+            <div class="p-3 double-bezel-inner rounded-xl text-xs">
+              <span class="font-medium text-charcoal">내관·전중 심경락 약침</span>
+              <p class="text-[11px] text-muted mt-0.5">정제 자하거·봉독 약침을 통한 흉강 울혈 해소</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-subtle/60 flex items-center justify-between text-xs text-muted">
+          <span>적응증: 부정맥, 화병, 흉통 후유증, 수족냉증</span>
+          <i data-lucide="activity" class="w-4 h-4 text-terracotta"></i>
+        </div>
+      </div>
+
+      <!-- Card 3: Arteriosclerosis & Blood Detox (Span 12 Full Width) -->
+      <div class="md:col-span-12 double-bezel p-8 rounded-2xl">
+        <div class="grid lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7">
+            <div class="flex items-center gap-2 text-xs mb-3">
+              <span class="font-mono text-jade font-semibold">CLINIC C</span>
+              <span class="text-muted font-mono text-[11px]">/ VASCULAR DETOXIFICATION</span>
+            </div>
+            <h3 class="text-xl font-bold text-charcoal mb-2">동맥경화 · 경동맥 협착 및 어혈(瘀血) 정화 요법</h3>
+            <p class="text-xs text-muted leading-relaxed">
+              혈관 내벽에 쌓이는 노폐물과 플라크를 억제하는 활혈거어(活血祛瘀) 한약 복용으로 혈관벽의 탄성을 복원하고 뇌졸중 및 심근경색의 조기 위험군을 사전에 안전하게 예방합니다.
+            </p>
+          </div>
+          <div class="lg:col-span-5 flex flex-wrap gap-2 justify-start lg:justify-end">
+            <span class="px-3 py-1.5 rounded-lg bg-surface border border-subtle text-xs text-charcoal font-medium">혈부축어탕 맞춤처방</span>
+            <span class="px-3 py-1.5 rounded-lg bg-surface border border-subtle text-xs text-charcoal font-medium">경동맥 초음파 판독</span>
+            <span class="px-3 py-1.5 rounded-lg bg-surface border border-subtle text-xs text-charcoal font-medium">혈류 탄성도 추적</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 4: Clinical 4-Stage Protocol (Strict Systematic Steps) -->
+  <section id="protocol" class="max-w-6xl mx-auto px-6 py-20 border-b border-subtle/60">
+    <div class="mb-12">
+      <span class="font-mono text-[11px] tracking-widest uppercase text-muted block mb-2">03 / Protocol</span>
+      <h2 class="text-3xl font-bold tracking-tight text-charcoal">양·한방 융합 4단계 임상 체계</h2>
+      <p class="text-xs text-muted mt-2">정밀 데이터 분석부터 집중 입원 재활 및 재발 방지까지 일관된 프로세스</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="p-6 rounded-xl border border-subtle bg-white relative">
+        <span class="font-mono text-2xl font-light text-muted/50 block mb-3">01</span>
+        <h4 class="text-sm font-bold text-charcoal mb-2">융합 정밀 진단</h4>
+        <p class="text-xs text-muted leading-relaxed">
+          한의학적 사상체질 및 맥진(脈診)과 더불어 대학병원급 영상의학 검사(MRI, 초음파, 심전도) 결과를 결합하여 진단합니다.
         </p>
       </div>
 
-      <!-- 3가지 핵심 진료 강점 -->
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group">
-          <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center mb-6 group-hover:scale-110 transition">
-            <i data-lucide="brain" class="w-6 h-6"></i>
-          </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-2">중풍 급성기 후 통합 재활</h3>
-          <p class="text-sm text-slate-600 leading-relaxed">
-            골든타임 처치 후 남는 편마비, 언어장애, 연하장애, 인지저하에 대해 뇌 혈류 개선 특화 처방과 두침(頭鍼) 요법으로 신경 회복을 극대화합니다.
-          </p>
-        </div>
+      <div class="p-6 rounded-xl border border-subtle bg-white relative">
+        <span class="font-mono text-2xl font-light text-muted/50 block mb-3">02</span>
+        <h4 class="text-sm font-bold text-charcoal mb-2">어혈 배출 및 감압</h4>
+        <p class="text-xs text-muted leading-relaxed">
+          혈관 내 미세 혈전을 제거하는 청혈탕과 고농축 액상 처방을 통해 뇌세포 부종과 혈류 저항을 완화합니다.
+        </p>
+      </div>
 
-        <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group">
-          <div class="w-12 h-12 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center mb-6 group-hover:scale-110 transition">
-            <i data-lucide="heart-pulse" class="w-6 h-6"></i>
-          </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-2">심계·정충 및 순환 장애 개선</h3>
-          <p class="text-sm text-slate-600 leading-relaxed">
-            원인 모를 가슴 답답함, 두근거림, 부정맥, 기립성 저혈압, 손발 저림 등 심장의 추동력 저하와 자율신경 불균형을 근본적으로 조절합니다.
-          </p>
-        </div>
+      <div class="p-6 rounded-xl border border-subtle bg-white relative">
+        <span class="font-mono text-2xl font-light text-muted/50 block mb-3">03</span>
+        <h4 class="text-sm font-bold text-charcoal mb-2">신경 가소성 촉진 재활</h4>
+        <p class="text-xs text-muted leading-relaxed">
+          동의의료원 재활치료실과 협력하여 전침, 감각 자극 약침, 운동 재활을 집중 병행하여 일상 복귀를 앞당깁니다.
+        </p>
+      </div>
 
-        <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group">
-          <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center mb-6 group-hover:scale-110 transition">
-            <i data-lucide="shield-check" class="w-6 h-6"></i>
-          </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-2">혈관 노화 방지 및 재발 예방</h3>
-          <p class="text-sm text-slate-600 leading-relaxed">
-            고혈압, 고지혈증, 당뇨 등 혈관 질환을 일으키는 대사 질환의 어혈과 습열(濕熱)을 정화하여 혈관의 탄력과 뇌심혈관 재발률을 낮춥니다.
-          </p>
-        </div>
+      <div class="p-6 rounded-xl border border-subtle bg-white relative">
+        <span class="font-mono text-2xl font-light text-muted/50 block mb-3">04</span>
+        <h4 class="text-sm font-bold text-charcoal mb-2">혈관 탄력 유지 및 사후관리</h4>
+        <p class="text-xs text-muted leading-relaxed">
+          퇴원 후 재발을 방지하기 위한 체질별 식이요법 및 장기적인 혈관 탄성도 정기 모니터링을 지속합니다.
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- 중점 진료 과목 탭 -->
-  <section id="specialty" class="py-20 bg-slate-100/70 border-y border-slate-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Clinical Specialties</span>
-        <h2 class="text-3xl font-extrabold text-slate-900 mt-1 serif-title">중점 진료 클리닉</h2>
-        <p class="text-slate-600 text-sm mt-2">뇌와 심장 질환의 세부 증상별 정밀 진료를 시행합니다.</p>
+  <!-- Section 5: Self Evaluation (Quiet, Honest Diagnostic Instrument) -->
+  <section id="self-eval" class="max-w-6xl mx-auto px-6 py-20 border-b border-subtle/60">
+    <div class="grid lg:grid-cols-12 gap-10 items-start">
+      
+      <div class="lg:col-span-5">
+        <span class="font-mono text-[11px] tracking-widest uppercase text-muted block mb-2">04 / Self Screening</span>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-charcoal leading-tight">
+          뇌혈관 및 심혈관<br>이상 신호 체크리스트
+        </h2>
+        <p class="text-xs text-muted leading-relaxed mt-4">
+          뇌와 심장의 미세혈관 허혈 상태는 중대 발작이 일어나기 전 미세한 전조증상으로 나타납니다. 최근 반복되는 증상을 체크해 보세요.
+        </p>
+
+        <div class="mt-8 p-4 rounded-xl double-bezel-inner text-xs text-muted">
+          <div class="flex items-center gap-2 text-charcoal font-semibold mb-1">
+            <i data-lucide="info" class="w-4 h-4 text-jade"></i>
+            <span>진료 안내 참고사항</span>
+          </div>
+          본 체크리스트는 자가 점검용 선별 도구이며 정확한 진단은 전문의 외래 진찰을 통해 이루어집니다.
+        </div>
       </div>
 
-      <!-- 탭 버튼 -->
-      <div class="flex justify-center mb-8">
-        <div class="inline-flex p-1.5 bg-slate-200 rounded-xl max-w-md w-full">
-          <button onclick="switchTab('neuro')" id="tab-neuro-btn" class="flex-1 py-2.5 rounded-lg text-sm font-semibold transition bg-white text-slate-900 shadow-sm">
-            뇌혈관·중풍 클리닉
+      <!-- Checklist Interactive Form -->
+      <div class="lg:col-span-7 double-bezel p-6 sm:p-8 rounded-2xl">
+        <div class="space-y-3" id="quizContainer">
+          <label class="flex items-start gap-3 p-3.5 rounded-xl border border-subtle/70 bg-paper/50 hover:bg-surface cursor-pointer transition">
+            <input type="checkbox" name="risk_item" class="mt-0.5 rounded text-jade focus:ring-jade/20 w-4 h-4" onchange="evaluateRisk()">
+            <span class="text-xs text-charcoal">갑자기 한쪽 팔, 다리에 힘이 빠지거나 저림이 생겼다가 풀린다.</span>
+          </label>
+
+          <label class="flex items-start gap-3 p-3.5 rounded-xl border border-subtle/70 bg-paper/50 hover:bg-surface cursor-pointer transition">
+            <input type="checkbox" name="risk_item" class="mt-0.5 rounded text-jade focus:ring-jade/20 w-4 h-4" onchange="evaluateRisk()">
+            <span class="text-xs text-charcoal">말을 하려 할 때 발음이 새거나 단어가 정확히 떠오르지 않는 순간이 있다.</span>
+          </label>
+
+          <label class="flex items-start gap-3 p-3.5 rounded-xl border border-subtle/70 bg-paper/50 hover:bg-surface cursor-pointer transition">
+            <input type="checkbox" name="risk_item" class="mt-0.5 rounded text-jade focus:ring-jade/20 w-4 h-4" onchange="evaluateRisk()">
+            <span class="text-xs text-charcoal">빠르게 걷거나 계단을 오를 때 흉골 안쪽이 쥐어짜듯 뻐근하게 아프다.</span>
+          </label>
+
+          <label class="flex items-start gap-3 p-3.5 rounded-xl border border-subtle/70 bg-paper/50 hover:bg-surface cursor-pointer transition">
+            <input type="checkbox" name="risk_item" class="mt-0.5 rounded text-jade focus:ring-jade/20 w-4 h-4" onchange="evaluateRisk()">
+            <span class="text-xs text-charcoal">안정 시에도 심장이 불규칙하게 덜컹거리거나 맥박이 건너뛰는 불쾌감이 있다.</span>
+          </label>
+
+          <label class="flex items-start gap-3 p-3.5 rounded-xl border border-subtle/70 bg-paper/50 hover:bg-surface cursor-pointer transition">
+            <input type="checkbox" name="risk_item" class="mt-0.5 rounded text-jade focus:ring-jade/20 w-4 h-4" onchange="evaluateRisk()">
+            <span class="text-xs text-charcoal">뒷목이 당기며 아침 기상 시 두통과 함께 시야가 침침하거나 어지럽다.</span>
+          </label>
+        </div>
+
+        <!-- Evaluation Output Panel -->
+        <div id="evalResult" class="mt-6 p-4 rounded-xl border border-subtle bg-surface text-xs leading-relaxed">
+          <div class="font-semibold text-charcoal flex items-center justify-between mb-1">
+            <span>평가 결과: 상태 양호</span>
+            <span class="font-mono text-muted text-[11px]" id="countDisplay">0 / 5 항목 선택</span>
+          </div>
+          <p class="text-muted text-[11px]">
+            현재 선택된 위험 인자가 없습니다. 규칙적인 수면과 유산소 운동으로 심혈관 탄성을 유지해 주세요.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 6: Clinic Timetable & Location (Quiet Data Grid) -->
+  <section id="clinic-hours" class="max-w-6xl mx-auto px-6 py-20">
+    <div class="grid lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Timetable (Span 7) -->
+      <div class="lg:col-span-7 double-bezel p-6 sm:p-8 rounded-2xl">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <span class="font-mono text-[11px] uppercase tracking-wider text-muted">Timetable</span>
+            <h3 class="text-lg font-bold text-charcoal mt-0.5">외래 진료 일정 안내</h3>
+          </div>
+          <span class="text-xs font-mono text-muted">한방내과 1진료실</span>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-center text-xs">
+            <thead>
+              <tr class="border-b border-subtle text-muted font-medium">
+                <th class="py-2.5 text-left font-normal">시간 구분</th>
+                <th class="py-2.5">월</th>
+                <th class="py-2.5">화</th>
+                <th class="py-2.5">수</th>
+                <th class="py-2.5">목</th>
+                <th class="py-2.5">금</th>
+                <th class="py-2.5 text-jade">토(격주)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-subtle/50 text-charcoal">
+              <tr>
+                <td class="py-3 text-left font-medium text-muted">오전 (09:00 - 12:30)</td>
+                <td class="py-3 font-semibold text-jade">진료</td>
+                <td class="py-3 font-semibold text-jade">진료</td>
+                <td class="py-3 text-muted/50">연구</td>
+                <td class="py-3 font-semibold text-jade">진료</td>
+                <td class="py-3 font-semibold text-jade">진료</td>
+                <td class="py-3 font-semibold text-jade">진료</td>
+              </tr>
+              <tr>
+                <td class="py-3 text-left font-medium text-muted">오후 (13:30 - 17:30)</td>
+                <td class="py-3 font-semibold text-jade">진료</td>
+                <td class="py-3 text-muted/50">회진</td>
+                <td class="py-3 font-semibold text-jade">진료</td>
+                <td class="py-3 font-semibold text-jade">진료</td>
+                <td class="py-3 text-muted/50">병동</td>
+                <td class="py-3 text-muted/50">휴진</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-subtle/60 text-[11px] text-muted space-y-1">
+          <p>• 점심시간: 12:30 – 13:30 / 일요일 및 법정공휴일은 휴진입니다.</p>
+          <p>• 급성 중풍 환자 입원 상담 및 전원 문의는 24시간 원무과와 연계됩니다.</p>
+        </div>
+      </div>
+
+      <!-- Location Card (Span 5) -->
+      <div class="lg:col-span-5 double-bezel p-6 sm:p-8 rounded-2xl flex flex-col justify-between">
+        <div>
+          <span class="font-mono text-[11px] uppercase tracking-wider text-muted">Hospital Info</span>
+          <h3 class="text-lg font-bold text-charcoal mt-0.5 mb-6">오시는 길 및 안내</h3>
+
+          <div class="space-y-4 text-xs">
+            <div>
+              <div class="text-muted text-[11px] mb-1">소재지</div>
+              <div class="text-charcoal font-medium">부산광역시 부산진구 양정로 62 (양정동)</div>
+              <div class="text-muted text-[11px]">동의의료원 본관 2층 동의대학교 한방병원</div>
+            </div>
+
+            <div class="pt-2 border-t border-subtle/50">
+              <div class="text-muted text-[11px] mb-1">대중교통</div>
+              <div class="text-charcoal font-medium">지하철 1호선 양정역 2번 출구</div>
+              <div class="text-muted text-[11px]">도보 8분 또는 병원 무료 순환 셔틀버스 운행</div>
+            </div>
+
+            <div class="pt-2 border-t border-subtle/50">
+              <div class="text-muted text-[11px] mb-1">외래 대표 연락처</div>
+              <div class="text-charcoal text-base font-bold font-mono">051-867-5101</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 pt-4 border-t border-subtle/60 flex items-center gap-3">
+          <a href="https://www.google.com/maps/place//data=!4m2!3m1!19sChIJpdW10a7saDURPgCrAER24n8" target="_blank" rel="noopener noreferrer" class="btn-press flex-1 py-2.5 rounded-lg border border-subtle text-center text-xs font-medium text-charcoal hover:bg-surface">
+            지도 확인
+          </a>
+          <button onclick="toggleModal(true)" class="btn-press flex-1 py-2.5 rounded-lg bg-jade hover:bg-jade-dark text-white text-center text-xs font-semibold">
+            상담 접수
           </button>
-          <button onclick="switchTab('cardio')" id="tab-cardio-btn" class="flex-1 py-2.5 rounded-lg text-sm font-semibold transition text-slate-600 hover:text-slate-900">
-            심혈관·가슴답답증
-          </button>
-          <button onclick="switchTab('prevent')" id="tab-prevent-btn" class="flex-1 py-2.5 rounded-lg text-sm font-semibold transition text-slate-600 hover:text-slate-900">
-            혈관경화·어혈 클리닉
-          </button>
         </div>
       </div>
 
-      <!-- 탭 컨텐츠 -->
-      <div id="tab-content" class="bg-white rounded-3xl p-8 sm:p-10 shadow-sm border border-slate-200/80">
-        <!-- 뇌혈관 컨텐츠 (기본) -->
-        <div id="content-neuro" class="grid lg:grid-cols-2 gap-8 items-center">
-          <div>
-            <div class="inline-block px-3 py-1 bg-brand-50 text-brand-700 font-semibold text-xs rounded-md mb-3">Stroke & Cerebrovascular Care</div>
-            <h3 class="text-2xl font-bold text-slate-900 mb-3">중풍(뇌경색·뇌출혈) 및 뇌신경 회복</h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
-              급성기 병원 치료 후 마비, 감각 저하, 구음장애, 안면마비 등 후유증으로 고통받는 환자분들을 위한 체계적인 입원·외래 한방 재활 프로그램을 운영합니다.
-            </p>
-            <ul class="space-y-3 text-sm text-slate-700">
-              <li class="flex items-center gap-3">
-                <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0"></i>
-                <span><strong>뇌경색 및 뇌출혈 후유증:</strong> 편측 운동마비 및 보행 장애 회복</span>
-              </li>
-              <li class="flex items-center gap-3">
-                <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0"></i>
-                <span><strong>중풍 전조증(일과성 뇌허혈발작):</strong> 어지럼증, 손발 저림, 일시적 시야 혼탁</span>
-              </li>
-              <li class="flex items-center gap-3">
-                <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0"></i>
-                <span><strong>혈관성 치매 및 인지장애:</strong> 뇌혈류 활성화를 통한 기억력 및 주의력 증진</span>
-              </li>
-              <li class="flex items-center gap-3">
-                <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0"></i>
-                <span><strong>연하 곤란 & 구음 장애:</strong> 설신경 자극 침치료와 연하 재활 한방요법</span>
-              </li>
-            </ul>
-          </div>
-          <div class="bg-brand-50/60 rounded-2xl p-6 border border-brand-100">
-            <h4 class="font-bold text-brand-900 text-sm mb-3">대표 특화 한방 요법</h4>
-            <div class="space-y-3 text-xs text-brand-800">
-              <div class="bg-white p-3.5 rounded-xl shadow-xs border border-brand-100">
-                <strong class="text-brand-900 block font-semibold text-sm">성향정기산 & 거풍제습 가감방</strong>
-                풍(風)과 담(痰)을 없애고 뇌 혈류량을 증진시켜 신경세포 회복을 돕는 맞춤 탕약
-              </div>
-              <div class="bg-white p-3.5 rounded-xl shadow-xs border border-brand-100">
-                <strong class="text-brand-900 block font-semibold text-sm">두침(頭鍼) 및 전침(電鍼) 요법</strong>
-                뇌 운동·감각 투사 구역에 미세 전침 자극을 가해 신경 가소성 촉진
-              </div>
-              <div class="bg-white p-3.5 rounded-xl shadow-xs border border-brand-100">
-                <strong class="text-brand-900 block font-semibold text-sm">우황청심원 & 공진단 고유 처방</strong>
-                개규(開竅) 효과로 중풍 전조증 예방 및 뇌기능 활력 회복
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 심혈관 컨텐츠 (숨김) -->
-        <div id="content-cardio" class="hidden grid lg:grid-cols-2 gap-8 items-center">
-          <div>
-            <div class="inline-block px-3 py-1 bg-rose-50 text-rose-700 font-semibold text-xs rounded-md mb-3">Cardiovascular Care</div>
-            <h3 class="text-2xl font-bold text-slate-900 mb-3">심장 질환·부정맥·흉통 클리닉</h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
-              정밀 검사상 큰 이상이 없으나 지속되는 가슴 답답함, 심계항진(두근거림), 숨참, 불안증부터 허혈성 심질환의 보조 요법까지 심장의 기운을 보강합니다.
-            </p>
-            <ul class="space-y-3 text-sm text-slate-700">
-              <li class="flex items-center gap-3">
-                <i data-lucide="check" class="w-4 h-4 text-rose-600 shrink-0"></i>
-                <span><strong>심계·정충증:</strong> 스트레스 및 자율신경 실조로 인한 심장 두근거림</span>
-              </li>
-              <li class="flex items-center gap-3">
-                <i data-lucide="check" class="w-4 h-4 text-rose-600 shrink-0"></i>
-                <span><strong>협심증 후 한방 케어:</strong> 관상동맥 스텐트 시술 후 흉통 완화 및 기력 회복</span>
-              </li>
-              <li class="flex items-center gap-3">
-                <i data-lucide="check" class="w-4 h-4 text-rose-600 shrink-0"></i>
-                <span><strong>울화병 및 흉민(胸悶):</strong> 가슴의 화(火)를 내리고 기를 통하게 하는 치료</span>
-              </li>
-              <li class="flex items-center gap-3">
-                <i data-lucide="check" class="w-4 h-4 text-rose-600 shrink-0"></i>
-                <span><strong>기립성 어지럼증 및 말초순환부전:</strong> 심폐 기능 저하로 인한 수족냉증 치료</span>
-              </li>
-            </ul>
-          </div>
-          <div class="bg-rose-50/60 rounded-2xl p-6 border border-rose-100">
-            <h4 class="font-bold text-rose-900 text-sm mb-3">대표 특화 한방 요법</h4>
-            <div class="space-y-3 text-xs text-rose-800">
-              <div class="bg-white p-3.5 rounded-xl shadow-xs border border-rose-100">
-                <strong class="text-rose-900 block font-semibold text-sm">청심연자음 & 천왕보심단</strong>
-                심열(心熱)을 식히고 음혈(陰血)을 보하여 가슴 답답함과 부정맥 증상 안정
-              </div>
-              <div class="bg-white p-3.5 rounded-xl shadow-xs border border-rose-100">
-                <strong class="text-rose-900 block font-semibold text-sm">내관·전중혈 심경락 약침</strong>
-                가슴 한가운데 전중혈과 심포경의 내관혈에 정제 봉독 및 자하거 약침 시술
-              </div>
-              <div class="bg-white p-3.5 rounded-xl shadow-xs border border-rose-100">
-                <strong class="text-rose-900 block font-semibold text-sm">혈맥 온양 뜸치료</strong>
-                심장의 양기를 보하여 전신 말초로 따뜻한 혈액이 흐르도록 유도
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 혈관경화/어혈 컨텐츠 (숨김) -->
-        <div id="content-prevent" class="hidden grid lg:grid-cols-2 gap-8 items-center">
-          <div>
-            <div class="inline-block px-3 py-1 bg-amber-50 text-amber-800 font-semibold text-xs rounded-md mb-3">Vascular Health & Prevention</div>
-            <h3 class="text-2xl font-bold text-slate-900 mb-3">동맥경화·어혈(瘀血) 정화 클리닉</h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
-              혈관벽이 두꺼워지고 탄력을 잃는 동맥경화증, 미세순환을 막는 혈전을 한의학적 활혈거어(活血祛瘀) 요법으로 다스려 심뇌혈관 중대 질환을 사전에 예방합니다.
-            </p>
-            <ul class="space-y-3 text-sm text-slate-700">
-              <li class="flex items-center gap-3">
-                <i data-lucide="check" class="w-4 h-4 text-amber-700 shrink-0"></i>
-                <span><strong>경동맥 플라크 관리:</strong> 경동맥 초음파 추적 관리 및 어혈 제거 한약 복용</span>
-              </li>
-              <li class="flex items-center gap-3">
-                <i data-lucide="check" class="w-4 h-4 text-amber-700 shrink-0"></i>
-                <span><strong>고혈압·고지혈증 체질 개선:</strong> 습담(濕痰) 배출을 통한 혈류 저항 감소</span>
-              </li>
-              <li class="flex items-center gap-3">
-                <i data-lucide="check" class="w-4 h-4 text-amber-700 shrink-0"></i>
-                <span><strong>만성 두통 및 목·어깨 뻣뻣함:</strong> 뇌로 가는 혈류 차단 증상 해소</span>
-              </li>
-            </ul>
-          </div>
-          <div class="bg-amber-50/60 rounded-2xl p-6 border border-amber-100">
-            <h4 class="font-bold text-amber-900 text-sm mb-3">대표 특화 한방 요법</h4>
-            <div class="space-y-3 text-xs text-amber-900">
-              <div class="bg-white p-3.5 rounded-xl shadow-xs border border-amber-100">
-                <strong class="text-amber-950 block font-semibold text-sm">혈부축어탕 & 단삼보혈환</strong>
-                혈관 내 염증 물질을 억제하고 혈전을 분해하는 대표 활혈화어(活血化瘀) 명약
-              </div>
-              <div class="bg-white p-3.5 rounded-xl shadow-xs border border-amber-100">
-                <strong class="text-amber-950 block font-semibold text-sm">해독 건비(健脾) 대사 활성요법</strong>
-                간과 비장의 대사 기능을 회복하여 콜레스테롤 및 혈당 안정 유도
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
     </div>
   </section>
 
-  <!-- 진료 시스템 & 치료 프로세스 -->
-  <section id="treatment" class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Integrative System</span>
-        <h2 class="text-3xl font-extrabold text-slate-900 mt-1 serif-title">동의대병원만의 4단계 통합 치료 프로세스</h2>
-        <p class="text-slate-600 text-sm mt-2">정밀 진단부터 집중 치료, 퇴원 후 재발 방지까지 일대일 맞춤 치료</p>
+  <!-- Footer: Taste-skill restrained typography -->
+  <footer class="border-t border-subtle bg-surface/50 text-muted py-12 text-xs">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-baseline justify-between gap-6">
+      <div>
+        <div class="font-semibold text-charcoal text-xs">동의대학교부속한방병원 뇌·심혈관 한방내과</div>
+        <p class="text-[11px] text-muted mt-1">부산광역시 부산진구 양정로 62 (양정동) | 외래: 051-867-5101</p>
+        <p class="text-[10px] text-muted/70 mt-1">본 웹페이지는 환자의 진료 편의와 의학 정보 제공을 목적으로 운영됩니다.</p>
       </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- 1단계 -->
-        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 relative">
-          <div class="text-3xl font-black text-brand-200 mb-2">01</div>
-          <h4 class="text-lg font-bold text-slate-900 mb-2">양·한방 융합 정밀 진단</h4>
-          <p class="text-xs text-slate-600 leading-relaxed">
-            맥진(脈診), 설진(舌診), 사상체질 검사와 함께 필요시 뇌 MRI, 혈관초음파, 심전도, 혈액 검사 결과를 종합 판독합니다.
-          </p>
-        </div>
-
-        <!-- 2단계 -->
-        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 relative">
-          <div class="text-3xl font-black text-brand-200 mb-2">02</div>
-          <h4 class="text-lg font-bold text-slate-900 mb-2">급성기 완화 & 어혈 배출</h4>
-          <p class="text-xs text-slate-600 leading-relaxed">
-            혈관을 막고 있는 어혈과 탁한 기운을 배출하는 고농축 맞춤 한약과 두침 요법으로 뇌신경 세포 부종과 저산소증을 완화합니다.
-          </p>
-        </div>
-
-        <!-- 3단계 -->
-        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 relative">
-          <div class="text-3xl font-black text-brand-200 mb-2">03</div>
-          <h4 class="text-lg font-bold text-slate-900 mb-2">집중 신경·기능 재활</h4>
-          <p class="text-xs text-slate-600 leading-relaxed">
-            입원 집중 치료실에서 한방 침구치료, 약침치료와 물리치료, 작업치료를 병행하여 편마비 및 운동 기능을 조기 복원합니다.
-          </p>
-        </div>
-
-        <!-- 4단계 -->
-        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 relative">
-          <div class="text-3xl font-black text-brand-200 mb-2">04</div>
-          <h4 class="text-lg font-bold text-slate-900 mb-2">혈관 탄력 유지 & 재발 방지</h4>
-          <p class="text-xs text-slate-600 leading-relaxed">
-            정기적인 혈관 탄성도 추적 및 평생 체질별 식이·운동 처방을 통해 뇌졸중과 심근경색의 재발률을 원천적으로 차단합니다.
-          </p>
-        </div>
+      <div class="font-mono text-[10px] text-muted">
+        © DONG-EUI UNIVERSITY MEDICAL CENTER. ALL RIGHTS RESERVED.
       </div>
     </div>
-  </section>
+  </footer>
 
-  <!-- 자가진단 인터랙티브 섹션 -->
-  <section id="self-check" class="py-20 bg-brand-900 text-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-10">
-        <span class="text-xs font-semibold uppercase tracking-wider text-emerald-400">Self Evaluation</span>
-        <h2 class="text-3xl font-bold mt-1 serif-title">뇌·심혈관 이상 신호 자가진단</h2>
-        <p class="text-slate-300 text-xs sm:text-sm mt-2">최근 1~3개월간 지속되거나 반복된 증상을 체크해보세요.</p>
-      </div>
-
-      <div class="bg-white/10 backdrop-blur-md rounded-3xl p-6 sm:p-10 border border-white/10">
-        <form id="quizForm" class="space-y-4">
-          <label class="flex items-start gap-3 p-3.5 rounded-xl bg-white/5 hover:bg-white/10 cursor-pointer transition">
-            <input type="checkbox" name="symptom" class="mt-1 w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500">
-            <span class="text-sm text-slate-100">가끔 한쪽 팔다리에 힘이 빠지거나 저릿한 감각이 들었다가 풀린다.</span>
-          </label>
-          <label class="flex items-start gap-3 p-3.5 rounded-xl bg-white/5 hover:bg-white/10 cursor-pointer transition">
-            <input type="checkbox" name="symptom" class="mt-1 w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500">
-            <span class="text-sm text-slate-100">말이 어눌해지거나 단어가 바로 떠오르지 않는 순간이 있다.</span>
-          </label>
-          <label class="flex items-start gap-3 p-3.5 rounded-xl bg-white/5 hover:bg-white/10 cursor-pointer transition">
-            <input type="checkbox" name="symptom" class="mt-1 w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500">
-            <span class="text-sm text-slate-100">계단을 오르거나 빠르게 걸을 때 가슴이 조이거나 뻐근한 압박감이 있다.</span>
-          </label>
-          <label class="flex items-start gap-3 p-3.5 rounded-xl bg-white/5 hover:bg-white/10 cursor-pointer transition">
-            <input type="checkbox" name="symptom" class="mt-1 w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500">
-            <span class="text-sm text-slate-100">특별한 이유 없이 심장이 불규칙하게 쿵쾅거리거나 건너뛰는 느낌이 든다.</span>
-          </label>
-          <label class="flex items-start gap-3 p-3.5 rounded-xl bg-white/5 hover:bg-white/10 cursor-pointer transition">
-            <input type="checkbox" name="symptom" class="mt-1 w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500">
-            <span class="text-sm text-slate-100">뒷목이 뻣뻣하고 아침에 일어날 때 머리가 무겁거나 맑지 않다.</span>
-          </label>
-          <label class="flex items-start gap-3 p-3.5 rounded-xl bg-white/5 hover:bg-white/10 cursor-pointer transition">
-            <input type="checkbox" name="symptom" class="mt-1 w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500">
-            <span class="text-sm text-slate-100">손발이 자주 차갑고 저리며 쥐가 자주 난다.</span>
-          </label>
-
-          <div class="pt-4 flex justify-center">
-            <button type="button" onclick="checkRisk()" class="px-8 py-3 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold rounded-xl transition shadow-lg shadow-emerald-500/20">
-              자가진단 결과 확인하기
-            </button>
-          </div>
-        </form>
-
-        <div id="riskResult" class="mt-6 p-4 rounded-xl hidden text-center"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 진료 시간표 & 병원 안내 -->
-  <section id="schedule" class="py-20 bg-slate-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-12 gap-12">
-        <!-- 진료 시간표 -->
-        <div class="lg:col-span-7 bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
-          <div class="flex items-center gap-2 mb-6">
-            <i data-lucide="clock" class="w-5 h-5 text-brand-700"></i>
-            <h3 class="text-xl font-bold text-slate-900">외래 진료 시간 안내</h3>
-          </div>
-
-          <div class="overflow-x-auto">
-            <table class="w-full text-center text-sm">
-              <thead>
-                <tr class="bg-slate-100 border-b border-slate-200 text-slate-700 font-semibold">
-                  <th class="py-3 px-3 text-left">구분</th>
-                  <th class="py-3 px-2">월</th>
-                  <th class="py-3 px-2">화</th>
-                  <th class="py-3 px-2">수</th>
-                  <th class="py-3 px-2">목</th>
-                  <th class="py-3 px-2">금</th>
-                  <th class="py-3 px-2 text-brand-700">토(격주)</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-slate-100 text-slate-600">
-                <tr>
-                  <td class="py-3.5 px-3 text-left font-medium text-slate-900 bg-slate-50/50">오전 (09:00 - 12:30)</td>
-                  <td class="py-3.5 px-2 text-brand-700 font-bold">진료</td>
-                  <td class="py-3.5 px-2 text-brand-700 font-bold">진료</td>
-                  <td class="py-3.5 px-2 text-slate-300">연구</td>
-                  <td class="py-3.5 px-2 text-brand-700 font-bold">진료</td>
-                  <td class="py-3.5 px-2 text-brand-700 font-bold">진료</td>
-                  <td class="py-3.5 px-2 text-brand-700 font-bold">진료</td>
-                </tr>
-                <tr>
-                  <td class="py-3.5 px-3 text-left font-medium text-slate-900 bg-slate-50/50">오후 (13:30 - 17:30)</td>
-                  <td class="py-3.5 px-2 text-brand-700 font-bold">진료</td>
-                  <td class="py-3.5 px-2 text-slate-300">회진</td>
-                  <td class="py-3.5 px-2 text-brand-700 font-bold">진료</td>
-                  <td class="py-3.5 px-2 text-brand-700 font-bold">진료</td>
-                  <td class="py-3.5 px-2 text-slate-300">병동</td>
-                  <td class="py-3.5 px-2 text-slate-300">휴진</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p class="text-xs text-slate-500 mt-4 leading-relaxed">
-            * 점심시간은 12:30 ~ 13:30 입니다. 일요일 및 법정 공휴일은 휴진입니다.<br>
-            * 응급 중풍 환자 및 입원 상담은 365일 응급진료 연계가 가능합니다.
-          </p>
-        </div>
-
-        <!-- 병원 위치 & 연락처 카드 -->
-        <div class="lg:col-span-5 bg-white p-8 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between">
-          <div>
-            <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-              <i data-lucide="map-pin" class="w-5 h-5 text-brand-700"></i>
-              찾아오시는 길 & 진료 예약
-            </h3>
-
-            <div class="space-y-4 text-sm text-slate-600">
-              <div>
-                <strong class="block text-slate-900 font-semibold mb-1">위치 안내</strong>
-                <p>부산광역시 부산진구 양정로 62 (양정동) 동의대학교 한방병원 2층</p>
-              </div>
-
-              <div>
-                <strong class="block text-slate-900 font-semibold mb-1">대중교통</strong>
-                <p>부산 지하철 1호선 양정역 2번 출구 (도보 7분 또는 셔틀버스 운행)</p>
-              </div>
-
-              <div>
-                <strong class="block text-slate-900 font-semibold mb-1">외래 대표 전화</strong>
-                <p class="text-xl font-bold text-brand-700">051-867-5101</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-8 pt-6 border-t border-slate-100 flex gap-3">
-            <a href="https://www.google.com/maps/place//data=!4m2!3m1!19sChIJpdW10a7saDURPgCrAER24n8" target="_blank" rel="noopener noreferrer" class="flex-1 py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 text-center font-semibold rounded-xl text-xs transition">
-              지도 보기
-            </a>
-            <button onclick="openBookingModal()" class="flex-1 py-3 bg-brand-700 hover:bg-brand-800 text-white font-semibold rounded-xl text-xs transition shadow-sm">
-              온라인 간편 예약
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 진료 예약 모달 -->
-  <div id="bookingModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl animate-fade-in">
-      <button onclick="closeBookingModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600">
-        <i data-lucide="x" class="w-6 h-6"></i>
+  <!-- Modal: Appointment Request (No generic alert() used) -->
+  <div id="bookingModal" class="fixed inset-0 bg-charcoal/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="double-bezel max-w-md w-full p-6 sm:p-8 rounded-2xl relative shadow-xl">
+      <button onclick="toggleModal(false)" class="absolute top-5 right-5 text-muted hover:text-charcoal">
+        <i data-lucide="x" class="w-5 h-5"></i>
       </button>
 
-      <div class="mb-6">
-        <span class="text-xs font-bold text-brand-700 uppercase">Appointment Request</span>
-        <h3 class="text-xl font-bold text-slate-900">진료 및 입원 상담 신청</h3>
-        <p class="text-xs text-slate-500 mt-1">접수해 주시면 전문 간호팀에서 확인 후 신속히 연락드립니다.</p>
+      <div class="mb-5">
+        <span class="font-mono text-[10px] uppercase tracking-wider text-jade">Consultation Request</span>
+        <h3 class="text-lg font-bold text-charcoal mt-0.5">진료 및 입원 상담 신청</h3>
+        <p class="text-[11px] text-muted mt-1">접수해 주시면 외래 간호팀에서 확인 후 연락드립니다.</p>
       </div>
 
-      <form id="reservationForm" onsubmit="handleBookingSubmit(event)" class="space-y-4 text-xs">
+      <form onsubmit="handleFormSubmit(event)" class="space-y-3.5 text-xs">
         <div>
-          <label class="block font-semibold text-slate-700 mb-1">환자 성명 *</label>
-          <input type="text" required placeholder="홍길동" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-600">
+          <label class="block text-muted text-[11px] font-medium mb-1">환자 성명 *</label>
+          <input type="text" required placeholder="성함을 입력하세요" class="w-full px-3 py-2 rounded-lg border border-subtle bg-paper focus:outline-none focus:border-jade text-charcoal">
         </div>
 
         <div>
-          <label class="block font-semibold text-slate-700 mb-1">연락처 *</label>
-          <input type="tel" required placeholder="010-0000-0000" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-600">
+          <label class="block text-muted text-[11px] font-medium mb-1">연락처 *</label>
+          <input type="tel" required placeholder="010-0000-0000" class="w-full px-3 py-2 rounded-lg border border-subtle bg-paper focus:outline-none focus:border-jade text-charcoal">
         </div>
 
         <div>
-          <label class="block font-semibold text-slate-700 mb-1">진료 분야 *</label>
-          <select required class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-600">
-            <option value="">진료 희망 항목을 선택하세요</option>
-            <option value="stroke">중풍(뇌졸중) 후유증 및 재활 입원</option>
-            <option value="cardio">심혈관 질환 (부정맥, 협심증 후유증)</option>
-            <option value="dementia">두통·어지럼증 / 뇌혈류 질환</option>
-            <option value="prevention">혈관 정화 및 동맥경화 예방</option>
+          <label class="block text-muted text-[11px] font-medium mb-1">상담 희망 분야 *</label>
+          <select required class="w-full px-3 py-2 rounded-lg border border-subtle bg-paper focus:outline-none focus:border-jade text-charcoal">
+            <option value="">진료 항목을 선택해 주세요</option>
+            <option value="stroke">중풍(뇌졸중) 후유증 및 입원 재활</option>
+            <option value="chest">가슴 답답함 / 부정맥 / 협심증 후유증</option>
+            <option value="artery">동맥경화 및 어혈 정화 클리닉</option>
+            <option value="general">기타 두통 · 어지럼증 및 일반 내과</option>
           </select>
         </div>
 
         <div>
-          <label class="block font-semibold text-slate-700 mb-1">상담 및 주요 증상 메모</label>
-          <textarea rows="3" placeholder="증상 발현 시기, 현재 복용 중인 약물, 수술 이력 등을 간략히 적어주세요." class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-600"></textarea>
+          <label class="block text-muted text-[11px] font-medium mb-1">증상 및 발병 시기</label>
+          <textarea rows="3" placeholder="현재 겪고 계신 불편한 증상이나 수술 이력을 간략히 메모해 주세요." class="w-full px-3 py-2 rounded-lg border border-subtle bg-paper focus:outline-none focus:border-jade text-charcoal"></textarea>
         </div>
 
-        <button type="submit" class="w-full py-3 bg-brand-700 hover:bg-brand-800 text-white font-bold rounded-xl transition text-sm shadow-md">
-          상담 예약 접수하기
+        <div id="formNotification" class="hidden p-3 rounded-lg bg-jade-soft text-jade text-[11px]"></div>
+
+        <button type="submit" id="submitBtn" class="btn-press w-full py-2.5 bg-jade hover:bg-jade-dark text-white font-semibold rounded-lg text-xs mt-2">
+          상담 신청 접수하기
         </button>
       </form>
     </div>
   </div>
 
-  <!-- 푸터 -->
-  <footer class="bg-slate-900 text-slate-400 py-12 text-xs border-t border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-        <div>
-          <div class="text-white font-bold text-sm mb-1">동의대학교 한방병원 뇌·심혈관 한방내과</div>
-          <p>부산광역시 부산진구 양정로 62 (양정동) | 대표전화: 051-867-5101</p>
-          <p class="text-slate-500 mt-1">본 웹페이지는 환자분들의 알권리 보장 및 진료 안내를 위해 제작되었습니다.</p>
-        </div>
-        <div class="text-slate-500">
-          © 동의대학교의료원 한방병원. All rights reserved.
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- 인터랙티브 스크립트 -->
   <script>
-    // Lucide Icons 렌더링
+    // Initialize Lucide Icons
     lucide.createIcons();
 
-    // 탭 전환 함수
-    function switchTab(type) {
-      const tabs = ['neuro', 'cardio', 'prevent'];
-      tabs.forEach(tab => {
-        const btn = document.getElementById(`tab-${tab}-btn`);
-        const content = document.getElementById(`content-${tab}`);
-        
-        if (tab === type) {
-          btn.className = 'flex-1 py-2.5 rounded-lg text-sm font-semibold transition bg-white text-slate-900 shadow-sm';
-          content.classList.remove('hidden');
-        } else {
-          btn.className = 'flex-1 py-2.5 rounded-lg text-sm font-semibold transition text-slate-600 hover:text-slate-900';
-          content.classList.add('hidden');
-        }
-      });
-      lucide.createIcons();
-    }
-
-    // 자가진단 계산기
-    function checkRisk() {
-      const checkboxes = document.querySelectorAll('input[name="symptom"]:checked');
-      const count = checkboxes.length;
-      const resultDiv = document.getElementById('riskResult');
-      resultDiv.classList.remove('hidden');
-
-      if (count === 0) {
-        resultDiv.className = 'mt-6 p-4 rounded-xl bg-emerald-950/80 border border-emerald-500/40 text-emerald-200 text-sm';
-        resultDiv.innerHTML = '<strong>선택된 증상이 없습니다.</strong><br>현재 혈관 건강 관리가 양호한 편입니다. 꾸준한 유산소 운동과 정기 검진을 권장합니다.';
-      } else if (count <= 2) {
-        resultDiv.className = 'mt-6 p-4 rounded-xl bg-amber-950/80 border border-amber-500/40 text-amber-200 text-sm';
-        resultDiv.innerHTML = `<strong>주의 단계 (${count}개 항목 일치)</strong><br>일시적인 피로 및 미세 혈액순환 저하 증상일 수 있습니다. 증상이 반복된다면 한방내과 전문의와의 진료를 통해 혈관 탄성도를 확인해보세요.`;
+    // Modal Control
+    function toggleModal(show) {
+      const modal = document.getElementById('bookingModal');
+      if (show) {
+        modal.classList.remove('hidden');
       } else {
-        resultDiv.className = 'mt-6 p-4 rounded-xl bg-rose-950/80 border border-rose-500/40 text-rose-200 text-sm';
-        resultDiv.innerHTML = `<strong>중점 정밀 검진 권고 단계 (${count}개 항목 일치)</strong><br>뇌혈관 또는 심혈관의 조기 경고 신호(중풍 전조증, 협심증 소견)일 가능성이 있습니다. 빠른 시일 내 동의대학교 한방병원 한방내과 정밀 검진 및 상담을 권장합니다.`;
+        modal.classList.add('hidden');
+        document.getElementById('formNotification').classList.add('hidden');
       }
     }
 
-    // 모달 제어
-    function openBookingModal() {
-      document.getElementById('bookingModal').classList.remove('hidden');
-    }
-
-    function closeBookingModal() {
-      document.getElementById('bookingModal').classList.add('hidden');
-    }
-
-    function handleBookingSubmit(e) {
+    // Modal Form Submission (without window.alert)
+    function handleFormSubmit(e) {
       e.preventDefault();
-      alert('진료 상담 예약 신청이 완료되었습니다.\n담당 간호사가 빠른 시간 내 기재해주신 번호로 연락드리겠습니다.');
-      closeBookingModal();
+      const notify = document.getElementById('formNotification');
+      const submitBtn = document.getElementById('submitBtn');
+      
+      notify.classList.remove('hidden');
+      notify.innerText = '상담 접수가 정상 완료되었습니다. 전문 간호팀에서 빠른 시간 내 연락드리겠습니다.';
+      submitBtn.disabled = true;
+      submitBtn.classList.add('opacity-50');
+
+      setTimeout(() => {
+        toggleModal(false);
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('opacity-50');
+      }, 2400);
+    }
+
+    // Self-Screening Evaluation Logic
+    function evaluateRisk() {
+      const checkedBoxes = document.querySelectorAll('input[name="risk_item"]:checked');
+      const count = checkedBoxes.length;
+      const countDisplay = document.getElementById('countDisplay');
+      const resultBox = document.getElementById('evalResult');
+
+      countDisplay.innerText = `${count} / 5 항목 선택`;
+
+      if (count === 0) {
+        resultBox.innerHTML = `
+          <div class="font-semibold text-charcoal flex items-center justify-between mb-1">
+            <span>평가 결과: 상태 양호</span>
+            <span class="font-mono text-muted text-[11px]">${count} / 5 항목 선택</span>
+          </div>
+          <p class="text-muted text-[11px]">
+            현재 선택된 이상 징후가 없습니다. 건강한 생활습관과 정기 혈압 관리를 권장합니다.
+          </p>
+        `;
+      } else if (count <= 2) {
+        resultBox.innerHTML = `
+          <div class="font-semibold text-jade flex items-center justify-between mb-1">
+            <span>평가 결과: 주의 및 순환 점검 권고</span>
+            <span class="font-mono text-muted text-[11px]">${count} / 5 항목 선택</span>
+          </div>
+          <p class="text-muted text-[11px]">
+            일시적인 기혈 울체(氣血鬱滯) 또는 미세혈류 저하 징후일 수 있습니다. 증상이 지속되거나 주 2회 이상 반복된다면 전문의 진료를 받아보시길 권합니다.
+          </p>
+        `;
+      } else {
+        resultBox.innerHTML = `
+          <div class="font-semibold text-terracotta flex items-center justify-between mb-1">
+            <span>평가 결과: 정밀 한방내과 진찰 요망</span>
+            <span class="font-mono text-muted text-[11px]">${count} / 5 항목 선택</span>
+          </div>
+          <p class="text-charcoal text-[11px]">
+            뇌혈관 및 관상동맥의 유의미한 전조증상(일과성 허혈, 자율신경실조) 가능성이 높습니다. 빠른 시일 내 동의대학교 한방병원 외래 진료를 통한 정밀 평가를 권장합니다.
+          </p>
+        `;
+      }
     }
   </script>
 </body>
